@@ -16,69 +16,38 @@ body.docs-grille-gm3,
 .outlines-widget-chaptered .kix-outlines-widget-header-contents,
 #docs-header:not(.docs-hub-appbar) .docs-titlebar-buttons,
 .docs-revisions-chromecover-content-color-default,
-.docs-revisions-sidebar,
-.docs-revisions-sidebar-header,
-.docs-revisions-sidebar-revisions-list-container,
-.docs-revisions-tile-content-wrapper,
-.docs-revisions-sidebar-date-group,
-.docs-revisions-tile,
-.left-sidebar-container,
-#workspace-container,
-#speakernotes-dragger:hover {
+/*
+  Inline JS helper (disabled): forces inline `!important` background-color
+  on spreadsheet cells. Kept commented until user-script support is added
+  to Transparency Zen (so the function can be enabled later).
+
+  To enable manually, paste the IIFE back into a user-script or the
+  browser console on a Google Sheets page.
+
+  (function(){ ... })();
+*/
+
+/* Aggressive CSS overrides for spreadsheet cells and pseudo-elements.
+   These rules try to catch common inline/background uses without JS.
+   Note: some author inline `!important` styles cannot be overridden
+   by plain CSS; use the user-script when available for those cases. */
+[role="grid"] *[style*="background"],
+[role="grid"] *[style*="background-color"],
+[role="grid"] *[style*="background-image"],
+[role="grid"] *::before,
+[role="grid"] *::after,
+[role="grid"] .cell,
+.waffle td,
+.waffle th,
+.sheets-viewport .cell,
+[role="grid"] .cell-input {
+  background: transparent !important;
   background-color: transparent !important;
-  background: none !important;
-  border: none !important;
+  background-image: none !important;
   box-shadow: none !important;
-  transition:
-    background-color 0.5s ease-in-out,
-    background 0.5s ease-in-out,
-    border 0.5s ease-in-out,
-    box-shadow 0.5s ease-in-out !important;
-  --gm3-sys-color-surface-bright: transparent !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
 }
-
-/* @the following are used for google slides;
-they are very minor tweaks to make the speaker notes resize bar not look weird without a background.
-This should not be included as a toggle!*/
-#speakernotes-dragger {
-  background-color: transparent !important;
-  height: 0px;
-}
-
-.speakernotes-dragger-thumb {
-  height: 4px;
-  background-color: #ffffff50 !important;
-}
-
-/* docs-borders */
-.kix-page-paginated {
-  border-radius: 1em !important;
-  overflow: hidden !important;
-  outline: none !important;
-}
-
-/* docs-color fix */
-.docs-title-input-label-inner {
-  visibility: hidden !important;
-}
-
-@media (prefers-color-scheme: dark) {
-  .docs-title-input,
-  .docs-revisions-tile-collaborator-name,
-  .docs-revisions-collapsible-pane-detailed-tiles-container,
-  .docs-revisions-tile-descriptor,
-  .docs-revisions-tile-text-box,
-  .docs-revisions-chromecover-titlebar-name-label,
-  .docs-revisions-sidebar-title-text,
-  .docs-revisions-sidebar-date-group,
-  .navigation-widget-header,
-  .docs-revisions-sidebar-actions *,
-  .docs-material-gm-select-caption {
-    color: white !important;
-  }
-
-  .docs-gm .docs-menubar .goog-control,
-  .docs-appbar-circle-button,
   .docs-titlebar-badge-container,
   #docs-parent-collections-container-outer,
   .docs-revisions-icon-img,
