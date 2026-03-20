@@ -188,7 +188,8 @@ This should not be included as a toggle!*/
   /* Generic selectors that match spreadsheet cells in Google Sheets and embedded tables */
   [role="grid"] .grid-container *,
   [role="grid"] .cell-input,
-  .waffle td, .waffle th,
+  .waffle td,
+  .waffle th,
   .sheets-viewport .cell,
   .grid-container .cell {
     background: transparent !important;
