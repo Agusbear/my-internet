@@ -16,6 +16,27 @@ body.docs-grille-gm3,
 .outlines-widget-chaptered .kix-outlines-widget-header-contents,
 #docs-header:not(.docs-hub-appbar) .docs-titlebar-buttons,
 .docs-revisions-chromecover-content-color-default,
+.docs-revisions-sidebar,
+.docs-revisions-sidebar-header,
+.docs-revisions-sidebar-revisions-list-container,
+.docs-revisions-tile-content-wrapper,
+.docs-revisions-date-group,
+.docs-revisions-tile,
+.left-sidebar-container,
+#workspace-container,
+#speakernotes-dragger:hover {
+  background-color: transparent !important;
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  transition:
+    background-color 0.5s ease-in-out,
+    background 0.5s ease-in-out,
+    border 0.5s ease-in-out,
+    box-shadow 0.5s ease-in-out !important;
+  --gm3-sys-color-surface-bright: transparent !important;
+}
+
 /*
   Inline JS helper (disabled): forces inline `!important` background-color
   on spreadsheet cells. Kept commented until user-script support is added
@@ -60,7 +81,7 @@ body.docs-grille-gm3,
   .navigation-widget-empty-content {
     color: #bbb !important;
   }
-}
+
 
 @media (prefers-color-scheme: light) {
   .docs-title-input,
@@ -175,57 +196,3 @@ body.docs-grille-gm3,
     background-image: none !important;
   }
 }
-
-/* Optional JS (paste into Zen/extension user script) —
-   computes an alpha from each cell's background color and reapplies it.
-   Behavior: brighter colors -> lower alpha; darker -> higher alpha.
-   Paste into the plugin's JS injection area or run in the page console. */
-/*
-(function(){
-  function parseRGB(s){
-    if(!s) return null;
-    const m = s.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([0-9.]+))?\)/);
-    if(m) return {r:+m[1], g:+m[2], b:+m[3], a: m[4] ? +m[4] : 1};
-    const hex = s.trim();
-    if(hex[0]==='#'){
-      const v = hex.slice(1);
-      const r = parseInt(v.length===3? v[0]+v[0]: v.slice(0,2),16);
-      const g = parseInt(v.length===3? v[1]+v[1]: v.slice(v.length===3?1:2, v.length===3?2:4),16);
-      const b = parseInt(v.length===3? v[2]+v[2]: v.slice(-2),16);
-      return {r,g,b,a:1};
-    }
-    return null;
-  }
-
-  function luminance(rgb){
-    // simple perceived brightness
-    return 0.2126*rgb.r + 0.7152*rgb.g + 0.0722*rgb.b;
-  }
-
-  function computeAlphaFromColor(rgb){
-    // Map brightness (0..255) to alpha (0.15 .. 0.85)
-    const L = luminance(rgb);
-    const t = 1 - (L/255); // darker -> closer to 1
-    const minA = 0.15, maxA = 0.85;
-    return Math.max(minA, Math.min(maxA, minA + (maxA-minA)*t));
-  }
-
-  function update(){
-    const cells = document.querySelectorAll('[role="grid"] [style*="background"], [role="grid"] .cell-input, .waffle td, .waffle th');
-    cells.forEach(el=>{
-      const cs = getComputedStyle(el).backgroundColor;
-      const rgb = parseRGB(cs);
-      if(!rgb) return;
-      const alpha = computeAlphaFromColor(rgb);
-      el.style.backgroundColor = `rgba(${rgb.r},${rgb.g},${rgb.b},${alpha.toFixed(3)})`;
-    });
-  }
-
-  const observer = new MutationObserver(()=> update());
-  observer.observe(document.body, {subtree:true, attributes:true, attributeFilter:['style','class']});
-  // run once on load
-  setTimeout(update, 500);
-  // periodic safety update
-  setInterval(update, 2000);
-})();
-*/
