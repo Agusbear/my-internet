@@ -69,19 +69,18 @@ body.docs-grille-gm3,
   -webkit-backdrop-filter: none !important;
   backdrop-filter: none !important;
 }
-  .docs-titlebar-badge-container,
-  #docs-parent-collections-container-outer,
-  .docs-revisions-icon-img,
-  .navigation-widget-hat-close-button,
-  .docs-revisions-chromecover-titlebar-button-back-container,
-  .javascriptMaterialdesignGm3WizIconButtonFilled-icon-button__icon-slot {
-    filter: invert(1) !important;
-  }
+.docs-titlebar-badge-container,
+#docs-parent-collections-container-outer,
+.docs-revisions-icon-img,
+.navigation-widget-hat-close-button,
+.docs-revisions-chromecover-titlebar-button-back-container,
+.javascriptMaterialdesignGm3WizIconButtonFilled-icon-button__icon-slot {
+  filter: invert(1) !important;
+}
 
-  .navigation-widget-empty-content {
-    color: #bbb !important;
-  }
-
+.navigation-widget-empty-content {
+  color: #bbb !important;
+}
 
 @media (prefers-color-scheme: light) {
   .docs-title-input,
